@@ -60,16 +60,19 @@ for (int i = 0; i < args.Length - 1; i += 2)
 	{
 		var newName = file.Replace(findStr, replaceStr);
 
-		Console.Write("Moving ");
-		Console.ForegroundColor = ConsoleColor.Yellow;
-		Console.Write(file.Substring(file.LastIndexOf('\\') + 1));
-		Console.ResetColor();
-		Console.Write(" to ");
-		Console.ForegroundColor = ConsoleColor.Yellow;
-		Console.Write(newName.Substring(newName.LastIndexOf('\\') + 1));
-		Console.ResetColor();
-		Console.WriteLine("...");
+		if (file != newName)
+		{
+			Console.Write("Moving ");
+			Console.ForegroundColor = ConsoleColor.Yellow;
+			Console.Write(file.Substring(file.LastIndexOf('\\') + 1));
+			Console.ResetColor();
+			Console.Write(" to ");
+			Console.ForegroundColor = ConsoleColor.Yellow;
+			Console.Write(newName.Substring(newName.LastIndexOf('\\') + 1));
+			Console.ResetColor();
+			Console.WriteLine("...");
 
-		File.Move(file, newName);
+			File.Move(file, newName);
+		}
 	}
 }
